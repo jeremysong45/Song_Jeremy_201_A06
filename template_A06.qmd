@@ -1,7 +1,7 @@
 ---
 title: "Assignment 6"
 subtitle: "STAT 201"
-author: "YOUR NAME"
+author: "JEREMY SONG"
 
 format:
   html:
@@ -31,7 +31,7 @@ The grader cannot grade what they cannot see! Failure to render your document af
 
 ## Question 1 (5 points)
 
-Link your RStudio to your GitHub account and create a **public** repository where you will commit and push this assignment to. We will be following the instructions in [https://happygitwithr.com/](https://happygitwithr.com/) The chapters listed below are referring to this book.
+Link your RStudio to your GitHub account and create a **public** repository where you will commit and push this assignment to. We will be following the instructions in [https://happygitwithr.com/](https://happygitwithr.com/.) The chapters listed below are referring to this book.
 
 
 Refer to the **instructions html** for this question! The instructions to setup GitHub are not included in this template to save space.
@@ -48,7 +48,7 @@ To get full credit for this Question you must:
 
 ## Github Repo Link
 
-[https://your-github-repo-url](https://your-github-repo-url)
+[https://github.com/jeremysong45/Song_Jeremy_201_A06](https://github.com/jeremysong45/Song_Jeremy_201_A06)
 
 :::
 
@@ -56,7 +56,7 @@ To get full credit for this Question you must:
 
 ## Screenshot/image of RStudio
 
-![](filepath.png)
+![](Git_setup.png)
 
 :::
 
@@ -102,7 +102,8 @@ Extract the value `8162` (LeBron James points) in 2 different ways:
 - using names
 
 ```{r}
-
+print(player_info[[2]][4])
+print(player_info$LJ$points)
 ```
 
 
@@ -113,7 +114,13 @@ Add a new named element to the end of each player's list called `height`. The he
 Print the `player_info` list to prove you were successful.
 
 ```{r}
+player_info$MJ$height <- 78
+player_info$LJ$height <- 81
+player_info$KB$height <- 78
+player_info$KA$height <- 86
+player_info$SO$height <- 85
 
+print(player_info)
 ```
 
 
@@ -132,6 +139,13 @@ Hint: initialize an empty list
 Note: this must still run correctly even if the values were to change or if another player were added to the list or if the player order changed.
 
 ```{r}
+points_per_game <- list()
+
+for (i in names(player_info)) {
+  points_per_game[[i]] <- player_info[[i]]$points / player_info[[i]]$games_played
+}
+
+print(points_per_game)
 
 ```
 
@@ -143,7 +157,13 @@ Use the list created in Part c and an appropriate apply function to round each v
 Store the output as a vector and print the results.
 
 ```{r}
+round_function <- function(x) {
+  round(x, digits = 2)
+}
 
+rounded_ppg <- sapply(points_per_game, round_function)
+
+print(rounded_ppg)
 ```
 
 
