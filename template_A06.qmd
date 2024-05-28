@@ -290,6 +290,6 @@ sum_of_digits <- function(num) {
     return((num %% 10) + sum_of_digits(floor(num / 10)))
   }
 }
-sum_of_digits(11)
+sum_of_digits(935068)
 ```
 
